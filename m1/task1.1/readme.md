@@ -25,7 +25,9 @@ remote.origin.url=git@github.com:neolviv/DevOps_online_Lviv_2022Q1Q2.git
 remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
 branch.main.remote=origin
 branch.main.merge=refs/heads/main
+
 =====================================================
+
 13fa8e2 2022-02-06 19:04 | task1.1_GIT.txt file added from external path to repo's m1/task1.1 folder (HEAD -> main, origin/main, origin/HEAD) [Andrii Zashkilniak]
 b92725f 2022-02-06 19:00 | Recived error on merging styles into develop (origin/develop, develop) [Andrii Zashkilniak]
 9545bd2 2022-02-06 18:58 | index.html changed (origin/styles, styles) [Andrii Zashkilniak]
@@ -34,7 +36,9 @@ d8b3075 2022-02-06 18:55 | image sources added to index.html (origin/images, ima
 a910ef9 2022-02-06 18:52 | images added [Andrii Zashkilniak]
 53431c8 2022-02-06 18:49 | index.html created [Andrii Zashkilniak]
 76a9cf4 2022-02-06 18:49 | Init commit [Andrii Zashkilniak]
-5479ebc 2022-02-06 18:45 | first commit [Andrii Zashkilniak]=====================================================
+5479ebc 2022-02-06 18:45 | first commit [Andrii Zashkilniak]
+
+=====================================================
 
 # In short, main goal of DevOps is to improvethe relationship between traditionaly siloed teams, development and operations
 
