@@ -44,6 +44,7 @@ cluster
 11. Configuring Shared Folder to use on VM1
 ![img](images/vb9.jpg)
 12. Configuring different network modes for VM1, VM2. Makeing a table of possible connections
+
 |   Mode   |VM>Host| VM<Host|VM<>VM|VM>Net/LAN|VM<Net/LAN|
 |----------|-------|--------|------|----------|----------|
 |Host-only |  Yes  |   Yes  | Yes  |     No   |     No   |
@@ -51,6 +52,7 @@ cluster
 |Briged    |  Yes  |   Yes  | Yes  |    Yes   |    Yes   |
 |NAT       |  Yes  |port-fwd|  No  |    Yes   | port-fwd |
 |NATservice|  Yes  |port-fwd| Yes  |    Yes   | port-fwd |
+
 13. Executing command line and examine vboxmanage cosole commands
 ![img](images/vb10.jpg)
 
