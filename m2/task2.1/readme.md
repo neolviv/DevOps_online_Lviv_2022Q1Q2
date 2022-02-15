@@ -8,15 +8,15 @@
 
 ## Answer 2:
 VMware vSphere/ESXi is a monolithic hypervisor and led the market
-in developing innovative features such as:
--memory overcommitment;
--graphical interface;
--high availability of centralized managment;
--Scale up to 512 VM's per host, up to 2048 vCPU's per host,up to 
-64 vCPU's and 1 Tb of vRAM per VM.
-While Microsoft Windows Server Hyper-V is a microkernel hypervisor
--Scale up to 320 logical CPU's, 4 Tb of vRAM, 2048 vCPU's per host
-and 64 vCPU's and 1 Tb vRAM per VM and 64 nodes/8000 VM's per 
+in developing innovative features such as:\
+-memory overcommitment;\
+-graphical interface;\
+-high availability of centralized managment;\
+-Scale up to 512 VM's per host, up to 2048 vCPU's per host,up to \
+64 vCPU's and 1 Tb of vRAM per VM.\
+While Microsoft Windows Server Hyper-V is a microkernel hypervisor\
+-Scale up to 320 logical CPU's, 4 Tb of vRAM, 2048 vCPU's per host\
+and 64 vCPU's and 1 Tb vRAM per VM and 64 nodes/8000 VM's per \
 cluster
 
 # PART 2
