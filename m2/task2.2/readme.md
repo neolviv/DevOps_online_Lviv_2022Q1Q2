@@ -41,11 +41,10 @@ Most suitable region for my ISP is Europe (Frankfurt) | eu-central-1
 -checking running instances
 ![img](images/ec2_10.jpg)
 
--Connected to instance using mobaXterm application
--configuring client
-![img](images/ec2_11.jpg)
+-connected to instance using mobaXterm application, configuring client
+![img](images/ec2_11.jpg)\
 
--ssh shell
+-working on ssh shell
 ![img](images/ec2_12.jpg)
 
 ### 5. Creating a snapshot of instance to keep as backup, select instance>Actions>Image and Templates>Create template from instance
@@ -108,9 +107,6 @@ Most suitable region for my ISP is Europe (Frankfurt) | eu-central-1
 
 -accessing WordPress website directly by ip
 ![img](images/ls11.jpg)
-
--accessing WordPress website by domainname andrewz.pp.ua
-![img](images/ls12.jpg)
 
 ### 11. Reviewed the tour on S3 Service
 -creating own S3 repository
@@ -215,5 +211,5 @@ Most suitable region for my ISP is Europe (Frankfurt) | eu-central-1
 -configuring domain ns server
 ![img](images/nicua5.jpg)
 
--result of visiting http://www.anddrewz.pp.ua/ is redirection to static website on Amazon S3
+-result of visiting http://www.andrewz.pp.ua/ is redirection to static website on Amazon S3
 ![img](images/s3s_6.jpg)
