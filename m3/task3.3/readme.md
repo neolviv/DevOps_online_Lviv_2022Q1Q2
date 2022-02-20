@@ -37,13 +37,13 @@ According to the table building routes and adding them to router settiings as de
 
 
 ### 5. Adding next RIP routing addresses to router
-Router ISP1:
-10.0.0.0
-32.0.0.0
-Router ISP2:
-32.0.0.0
-Router ISP3:
-8.0.0.0
+Router ISP1:\
+10.0.0.0\
+32.0.0.0\
+Router ISP2:\
+32.0.0.0\
+Router ISP3:\
+8.0.0.0\
 32.0.0.0
 <details>
   <summary>Click to expand!</summary>
