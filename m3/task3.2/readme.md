@@ -78,15 +78,19 @@ On Client 3 Gateway automatically assigned by Home router internal DHCP server
 
 #### Now Servers can't rich each other, It happaned because of changing the subnet mask to 255.255.255.192, simply we devide network 8.22.84.0 onto 4 isolated segments
 For example:\
-we have created such 4 networks from 8.22.84.0\
-Network 1 - 8.22.84.0;   IP RANGE from 8.22.84.1 to 8.22.84.62;    BROADCAST IP - 8.22.84.63\
-Network 2 - 8.22.84.64;  IP RANGE from 8.22.84.65 to 8.22.84.126;  BROADCAST IP - 8.22.84.127\
-Network 3 - 8.22.84.128; IP RANGE from 8.22.84.129 to 8.22.84.190; BROADCAST IP - 8.22.84.191\
-Network 4 - 8.22.84.192; IP RANGE from 8.22.84.193 to 8.22.84.254; BROADCAST IP - 8.22.84.255\
+dividinfg network 8.22.84.0/24 onto 4 subnets:
+|  Networks | Network address |      Network IP Range      | Broadcast address |
+|:---------:|:---------------:|:--------------------------:|:-----------------:|
+| Network 1 |       8.22.84.0 |    8.22.84.1 to 8.22.84.62 |        8.22.84.63 |
+| Network 2 |      8.22.84.64 |  8.22.84.65 to 8.22.84.126 |       8.22.84.127 |
+| Network 3 |     8.22.84.128 | 8.22.84.129 to 8.22.84.190 |       8.22.84.191 |
+| Network 4 |     8.22.84.192 | 8.22.84.193 to 8.22.84.254 |       8.22.84.255 |
+
 From this table we can see that all Server IP's belongs to separated networks:\
 Web Server 1 IP 8.22.84.50 belongs to Network 1\
 Web Server 2 IP 8.22.84.100 belongs to Network 2\
 DNS Server IP 8.22.84.150 belongs to Network 3
+This is separated network that can't communicate each other without routing 
 
 ### 9. Arranging connections on Data Center segment of network according to task
 on Data Center Switch creating VLAN's 2,3 and 4 and then assigning them to\
