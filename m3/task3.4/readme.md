@@ -3,7 +3,7 @@
 ### 1. Configuring DHCP on Enterpeise segment of network
 
 
-### 2. Configuring DHCP Pool for 10.84.22.0/24 network, first IP - 10.84.22.10\
+### 2. Configuring DHCP Pool for 10.84.22.0/24 network, first IP - 10.84.22.10
 <details>
   <summary>Click to expand!</summary>
   
