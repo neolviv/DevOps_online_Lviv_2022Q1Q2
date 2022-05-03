@@ -2,20 +2,20 @@
 
 
 ### 1. Analyzing the structure of the /etc/passwd and /etc/group file:
-
--The /etc/passwd is a plain text file. It contains a list of the system's accounts, giving for each account some useful information like user ID, group ID, home directory, shell, and more. Usinag *cat etc/passwd* command for displaying the contents of file. Pseudo-users are marked by red color and real users by green. Pseudo-users are related to system and program services and has UID 1 to 499, while General users UID is 500-60000
+-The **/etc/passwd** is a plain text file. It contains a list of the system's accounts, giving for each account some useful information like user ID, group ID, home directory, shell, and more. Usinag *cat etc/passwd* command for displaying the contents of file. Pseudo-users are marked by red color and real users by green. Pseudo-users are related to system and program services and has UID 1 to 499, while General users UID is 500-60000
 <details>
   <summary>Click to expand!</summary>
 
   ![img](images/lx01.jpg)
 </details>
 
--Each line of the /etc/passwd file contains seven comma-separated fields, as depicted at attached screenshot
+-Each line of the **/etc/passwd** file contains seven comma-separated fields, as depicted on attached screenshot
 <details>
   <summary>Click to expand!</summary>
 
   ![img](images/pwd.jpg)
 </details>
+
 Fields:
 1. *Username:* It is used when user logs in. It should be between 1 and 32 characters in length;
 2. *Password:* An *x* character indicates that encrypted password is stored in /etc/shadow file;
@@ -25,7 +25,7 @@ Fields:
 6. *Home directory:* The absolute path to the directory the user will be in when they log in;
 7. *Command/shell:* The absolute path of a command or shell (/bin/bash). Typically, this is a shell.
 
--The /etc/passwd file stores group information or defines the user groups i.e. it defines the groups to which users belong. Usinag *cat etc/group* command for displaying the contents of file 
+-The **/etc/passwd** file stores group information or defines the user groups i.e. it defines the groups to which users belong. Usinag *cat etc/group* command for displaying the contents of file 
 <details>
   <summary>Click to expand!</summary>
 
@@ -38,6 +38,7 @@ Fields:
 
   ![img](images/grp.jpg)
 </details>
+
 Fields:
 1. *Group_name:* It is the name of group;
 2. *Password:* Generally password is not used, hence it is empty/blank. It can store encrypted password. This is useful to implement privileged groups;
@@ -135,17 +136,17 @@ For examle let's change user name 'test' to 'tst'
 
 
 ### 13. Here is a quick breakdown of the access that the three basic permission types grant a user.
-  Read(r):
-  -For a normal file, read permission allows a user to view the contents of the file.
-  -For a directory, read permission allows a user to view the names of the file in the directory.
+Read(r):\
+-For a normal file, read permission allows a user to view the contents of the file.\
+-For a directory, read permission allows a user to view the names of the file in the directory.
 
-  Write(w):
-  -For a normal file, write permission allows a user to modify and delete the file.
-  -For a directory, write permission allows a user to delete the directory, modify its contents (create, delete, and rename files in it), and modify the contents of files that the user has write permissions to.
+Write(w):\
+-For a normal file, write permission allows a user to modify and delete the file.\
+-For a directory, write permission allows a user to delete the directory, modify its contents (create, delete, and rename files in it), and modify the contents of files that the user has write permissions to.
 
-  Execute(x):
-  -For a normal file, execute permission allows a user to execute a file (the user must also have read permission). As such, execute permissions must be set for executable programs and shell scripts before a user can run them.
-  -For a directory, execute permission allows a user to access, or traverse, into (i.e. cd) and access metadata about files in the directory.
+Execute(x):\
+-For a normal file, execute permission allows a user to execute a file (the user must also have read permission). As such, execute permissions must be set for executable programs and shell scripts before a user can run them.\
+-For a directory, execute permission allows a user to access, or traverse, into (i.e. cd) and access metadata about files in the directory.
 
 
 ### 14. The command *chmod* used to change the owner of a file (directory). It restricts the way a file can be accessed. For example *chmod u=rwx,g=rx,o=r myfile* uses symbolic permissions notation. The letters u, g, and o stand for "user", "group", and "other". The equals sign ("=") means "set the permissions exactly like this," and the letters "r", "w", and "x" stand for "read", "write", and "execute", respectively. The commas separate the different classes of permissions, and there are no spaces between them. See screenshot below of example in terminal
@@ -157,16 +158,16 @@ For examle let's change user name 'test' to 'tst'
 
 
 ### 15. Here is the equivalent command using octal permissions notation - *chmod 754 myfile*
-Here the digits 7, 5, and 4 each individually represent the permissions for the user, group, and others, in that order. Each digit is a combination of the numbers 4, 2, 1, and 0:
-    4 stands for "read",
-    2 stands for "write",
-    1 stands for "execute", and
-    0 stands for "no permission."
+Here the digits 7, 5, and 4 each individually represent the permissions for the user, group, and others, in that order. Each digit is a combination of the numbers 4, 2, 1, and 0:\
+    4 stands for "read",\
+    2 stands for "write",\
+    1 stands for "execute", and\
+    0 stands for "no permission."\
 So 7 is the combination of permissions 4+2+1 (read, write, and execute), 5 is 4+0+1 (read, no write, and execute), and 4 is 4+0+0 (read, no write, and no execute).
 
-The *umask* command returns, or sets, the value of the system's file mode creation mask. For example command *umask u-x,g=r,o+w* will set the mask so that when subsequent files are created, they have permissions that This command:
-    1. prohibit the execute permission from being set for the file's owner (user), while leaving the rest of the owner permissions unchanged;
-    2. enable read permission for the group, while prohibiting write and execute permission for the group;
+The *umask* command returns, or sets, the value of the system's file mode creation mask. For example command *umask u-x,g=r,o+w* will set the mask so that when subsequent files are created, they have permissions that This command:\
+    1. prohibit the execute permission from being set for the file's owner (user), while leaving the rest of the owner permissions unchanged;\
+    2. enable read permission for the group, while prohibiting write and execute permission for the group;\
     3. enable write permission for others, while leaving the rest of the other permissions unchanged.
 
 
