@@ -38,17 +38,17 @@
 
 
 ### 7. Printing the list of processes to the terminal by *ps -aux|head* command.
-Brief describtion of the statuses of the processes:
-    USER = user owning the process
-    PID = process ID of the process
-    %CPU = It is the CPU time used divided by the time the process has been running.
-    %MEM = ratio of the process’s resident set size to the physical memory on the machine
-    VSZ = virtual memory usage of entire process (in KiB)
-    RSS = resident set size, the non-swapped physical memory that a task has used (in KiB)
-    TTY = controlling tty (terminal)
-    STAT = multi-character process state
-    START = starting time or date of the process
-    TIME = cumulative CPU time
+Brief describtion of the statuses of the processes:\
+    USER = user owning the process\
+    PID = process ID of the process\
+    %CPU = It is the CPU time used divided by the time the process has been running\
+    %MEM = ratio of the process’s resident set size to the physical memory on the machine\
+    VSZ = virtual memory usage of entire process (in KiB)\
+    RSS = resident set size, the non-swapped physical memory that a task has used (in KiB)\
+    TTY = controlling tty (terminal)\
+    STAT = multi-character process state\
+    START = starting time or date of the process\
+    TIME = cumulative CPU time\
     COMMAND = command with all its arguments
 <details>
   <summary>Click to expand!</summary>
