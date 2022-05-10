@@ -111,8 +111,7 @@ Brief describtion of the statuses of the processes:\
 ### 15. Yes, we can change the priority of a process using the top command. By pressing the 'r' key to renice process by ID.
 
 
-### 16.  To send a signal to a process, the kill command is used. The most common use is the need to stop a process, which you can do by using the kill command followed by the PID of the 
-process. This sends the SIGTERM signal to the process, which normally causes the process to cease its activity. SIGINT (Ctrl + C) – You know this already. Pressing Ctrl + C kills the running foreground process. This sends the SIGINT to the process to kill it.
+### 16.  To send a signal to a process, the kill command is used. The most common use is the need to stop a process, which you can do by using the kill command followed by the PID of the process. This sends the SIGTERM signal to the process, which normally causes the process to cease its activity. SIGINT (Ctrl + C) – You know this already. Pressing Ctrl + C kills the running foreground process. This sends the SIGINT to the process to kill it.
 
 
 ### 17. When we work with the Linux command line, sometimes we want to start a process and let it run in the background as a job. In this way, it doesn’t block the terminal, and we can do some other work while it’s running. See screenshot below for example.
