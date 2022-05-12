@@ -23,11 +23,13 @@ Configuring VM's network settings, as pictured below
 <details>
   <summary>Click to expand!</summary>
 
-  Server_1 config:
+  Server_1 config:\
   ![img](images/vm_srv_cfg.jpg)
-  Client_1 config:
+  
+  Client_1 config:\
   ![img](images/vm_cl1_cfg.jpg)
-  CLient_2 config
+  
+  CLient_2 config\
   ![img](images/vm_cl2_cfg.jpg)
 </details>
 
@@ -36,9 +38,10 @@ Configuring VM's network settings, as pictured below
 <details>
   <summary>Click to expand!</summary>
 
-  -editing cofiguration yaml file with nano
+  -editing cofiguration yaml file with nano\
   ![img](images/lxnt01.jpg)
-  -trying to apply changes using *netplan try*, and applying configuration using *netplan apply*
+  
+  -trying to apply changes using *netplan try*, and applying configuration using *netplan apply*\
   ![img](images/lxnt02.jpg)
 </details>
 
@@ -47,9 +50,10 @@ Configuring VM's network settings, as pictured below
 <details>
   <summary>Click to expand!</summary>
 
-  -DHCP service configuratiom file */etc/dhcp/dhcpd.conf*
+  -DHCP service configuratiom file */etc/dhcp/dhcpd.conf*\
   ![img](images/lxnt03.jpg)
-  -DHCP service successfully working
+  
+  -DHCP service successfully working\
   ![img](images/lxnt04.jpg)
 </details>
 
@@ -58,9 +62,10 @@ Configuring VM's network settings, as pictured below
 <details>
   <summary>Click to expand!</summary>
 
-  -Client_1(Ubunutu)
+  -Client_1(Ubunutu)\
   ![img](images/lxnt05.jpg)
-  -Client_2(CentOS)
+  
+  -Client_2(CentOS)\
   ![img](images/lxnt06.jpg)
 </details>
 
@@ -102,9 +107,10 @@ As depicted on screenshot we could see that 172.17.32.1 address is existing some
 <details>
   <summary>Click to expand!</summary>
 
-  -Client_1(Ubunutu)
+  -Client_1(Ubunutu)\
   ![img](images/lxnt11.jpg)
-  -Client_2(CentOS)
+  
+  -Client_2(CentOS)\
   ![img](images/lxnt12.jpg)
   ![img](images/lxnt13.jpg)
 </details>
