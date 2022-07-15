@@ -1,5 +1,15 @@
 # FINAL PROJECT
 
+Contents:
+Presentation file: ```FinalProject.ppt(would be updated soon)```  
+Vagrant configuration file: ```Vagrantfile```  
+Ansible playbook: ```ansible/config.yml```  
+Ansble hosts file: ```ansible/hosts.ini```  
+Public SSH Key: ```keys/.ssh/vagrant_rsa```  
+Private SSH Key: ```keys/.ssh/vagrant_rsa.pub```  
+Brief description: This file(```readme.md```)  
+  
+
 ## FEW WORDS ABOUT MYSELF
 
 ## FINAL PROJECT IN-BRIEF
