@@ -50,5 +50,17 @@ Ansible-playbook that I have created, has the next steps:
 3. For jenkins machine - installs SSH keys, install software and jenkons, restores jenkins configuration and tasks, install jenkins plugins
 4. For apache machine - install and upadate Apache service, arranges rights for ```/var/www/```
 After that Infrastructure is raised and working, all I need to do is run PowerShell on my Windows-based machine, change dirictory to my project and run ```vagrant up``` command.
+So let's se what happens on the screen, when we execute ```vagrant up``` command.
+![img](images/vagrant_start.jpg)
+Next important moment while script runs is moment when Vagrant starts provisioning an Ansible host.
+![img](images/vagrant_provis_start.jpg)
+In this part of script vagrant is installing python-pip required for Ansiblw installation, and then installs ansible
+![img](images/vagrant_provis_end.jpg)
+After Anisble has installed, ansible-playbook executed and continues to provision Git, Jenkins and Apache VM's.
+![img](images/ansible_provis_start.jpg)
+And after all playbook scipts complete, infrastrucrure is up and able to work.
+![img](images/ansible_provis_end.jpg)
 
+
+Run vagrant up
 to be updated soon...
