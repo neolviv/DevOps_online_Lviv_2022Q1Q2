@@ -1,7 +1,6 @@
 # FINAL PROJECT
 
 Files list:  
-Presentation file: ```FinalProject.ppt(would be updated soon)```  
 Vagrant configuration file: ```Vagrantfile```  
 Ansible playbook: ```ansible/config.yml```  
 Ansble hosts file: ```ansible/hosts.ini```  
