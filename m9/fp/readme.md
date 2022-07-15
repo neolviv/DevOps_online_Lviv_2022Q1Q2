@@ -35,99 +35,20 @@ Scheme of the deployed infrastructure
   ![img](images/vagrant_host.jpg)
 </details>
 
-After analyzing of requirments, next Vagrantfile was created:
-```
-VAGRANTFILE_API_VERSION = "2"
+For building planned infrastucture I've choosed Vagrant tool. Vagrant gives you a disposable environment and consistent workflow for developing and testing infrastructure management scripts.
+Cause my host machine is not so powerful, I've choosed such system params for Vagrant VM's:
+1. git mashne - 1 cpu, 512 Mb of RAM
+2. jenkins host - 1 cpu, 2048 Mb of RAM
+3. apache host - 1 cpu, 1024 Mb of RAM
+4. ansible host - 1 cpu, 1024 Mb of RAM
+So I build ```Vagrantfile``` according to requirments, note that Ansoible host machine must be raised last, caouse it will provision all rest machines, and they must be booted up before Ansible playbook begin to run.
+Also I have used Vagrant provisioning to install Ansible, copy required files and launch Ansible-playbook.
+Next Step, was to create Ansible-playbook that will control all the raused infrastructure. Note, that I'm using only one pre-generated SSH key to work with all infrastructure machines.
+Ansible-playbook that I have created, has the next steps:
+1. Ensure all VM's from hosts.ini file started right and are accessible
+2. For git machine - install all needed SSH keys, and configuratin, and do git clone from known GitHub repository
+3. For jenkins machine - installs SSH keys, install software and jenkons, restores jenkins configuration and tasks, install jenkins plugins
+4. For apache machine - install and upadate Apache service, arranges rights for ```/var/www/```
+After that Infrastructure is raised and working, all I need to do is run PowerShell on my Windows-based machine, change dirictory to my project and run ```vagrant up``` command.
 
-$ansible_master = <<-'SCRIPT'
-sudo chmod 400 .ssh/vagrant_rsa
-sudo apt-get --assume-yes install python3-pip
-sudo pip install --no-input ansible
-su --login -c "ansible-playbook config.yml -i hosts.ini" vagrant
-SCRIPT
-
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-# Use the same key for each machine
-  config.ssh.insert_key = false
-  config.ssh.private_key_path = ["keys/.ssh/vagrant_rsa", "~/.vagrant.d/insecure_private_key"]
-
-  config.vm.define "gitvm" do |vm1|
-    vm1.vm.box = "bento/ubuntu-20.04"
-    vm1.vm.network "public_network", ip: "192.168.88.50"
-    # vm1.vm.network "forwarded_port", guest: 22, host: 2222
-    vm1.vm.hostname = "gitvm"
-    vm1.vm.provision "file", source: "keys/.ssh/vagrant_rsa.pub", destination: "~/.ssh/authorized_keys"
-    vm1.vm.provider "virtualbox" do |vb|
-      vb.name = "gitvm"
-      vb.customize ["modifyvm", :id, "--memory", "512"]
-      vb.customize ["modifyvm", :id, "--cpus", "1"]
-    end
-  end
-  config.vm.define "jenkinsvm" do |vm2|
-    vm2.vm.box = "bento/ubuntu-20.04"
-    vm2.vm.network "public_network", ip: "192.168.88.51"
-    # , bridge: "wlo1"
-    # vm2.vm.network "forwarded_port", guest: 22, host: 2200
-    vm2.vm.network "forwarded_port", guest: 8080, host: 8081
-    vm2.vm.hostname = "jenkinsvm"
-    vm2.vm.provision "file", source: "keys/.ssh/vagrant_rsa.pub", destination: "~/.ssh/authorized_keys"
-    vm2.vm.provider "virtualbox" do |vb|
-      vb.name = "jenkinsvm"
-      vb.customize ["modifyvm", :id, "--memory", "2048"]
-      vb.customize ["modifyvm", :id, "--cpus", "1"]
-    end
-  end
-  config.vm.define "prodvm" do |vm3|
-    vm3.vm.box = "bento/ubuntu-20.04"
-    vm3.vm.network "public_network", ip: "192.168.88.52"
-    # vm3.vm.network "forwarded_port", guest: 22, host: 2201
-    vm3.vm.network "forwarded_port", guest: 80, host: 8000
-    vm3.vm.hostname = "prodvm"
-    vm3.vm.provision "file", source: "keys/.ssh/vagrant_rsa.pub", destination: "~/.ssh/authorized_keys"
-    vm3.vm.provider "virtualbox" do |vb|
-      vb.name = "prodvm"
-      vb.customize ["modifyvm", :id, "--memory", "1024"]
-      vb.customize ["modifyvm", :id, "--cpus", "1"]
-    end
-  end
-  config.vm.define "ansiblevm" do |vm4|
-    vm4.vm.box = "bento/ubuntu-20.04"
-    vm4.vm.network "public_network", ip: "192.168.88.53"
-    # vm4.vm.network "forwarded_port", guest: 22, host: 2202
-    vm4.vm.hostname = "ansiblevm"
-    vm4.vm.provision "file", source: "keys/.ssh/vagrant_rsa.pub", destination: "~/.ssh/authorized_keys"
-    vm4.vm.provider "virtualbox" do |vb|
-      vb.name = "ansiblevm"
-      vb.customize ["modifyvm", :id, "--memory", "512"]
-      vb.customize ["modifyvm", :id, "--cpus", "1"]
-    end
-    vm4.vm.provision "file", source: "keys/.ssh/vagrant_rsa", destination: "~/.ssh/vagrant_rsa"
-    vm4.vm.provision "file", source: "ansible/config.yml", destination: "~/config.yml"
-    vm4.vm.provision "file", source: "ansible/hosts.ini", destination: "~/hosts.ini"
-    vm4.vm.provision "file", source: "ansible/.ansible.cfg", destination: "~/.ansible.cfg"
-    vm4.vm.provision "shell", inline: $ansible_master
-    # This option should be used if host machine supports Ansible
-    # vm4.vm.provision "ansible", playbook: "config.yml", inventory_path: "hosts.ini", limit: "all" 
-  end
-end
-```
-
-
-For building infrastucture
-Vagrant gives you a disposable environment and consistent workflow for developing and testing infrastructure management scripts.
-Infrastructure It consists from 4 steps:
-1. Worksaton with git installed and configured
-2. Jenkins master workstation
-3. Product workstation with Apache installed and configured
-4. Ansible master workstation
-
-All workstations are deployed with Vagrant virtual machine environments building and managment tool.
-
-
-
-## MODEL/VISION
-
-## IMPLEMENTATION
-
-### 1. Vagrant code.
-
+to be updated soon...
