@@ -1,0 +1,124 @@
+---
+- name: Connection Testing
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Pinging Servers
+    ping:
+
+- name: Configuring Git on gitvm 
+  hosts: gitvm
+  become: yes
+  become_user: vagrant
+  tasks:
+  - name: Changing attribures to read-only for private key
+    shell: chmod 400 .ssh/id_rsa
+  - name: Registring GtHub to known_hosts to avoid prompting
+    shell: ssh-keyscan github.com >> ~/.ssh/known_hosts 2>/dev/null
+  - name: Cloning repo from GitHub
+    shell: git clone git@github.com:neolviv/git.intro.git
+
+- name: Installing Java and Jenkins on jenkinsvm
+  hosts: jenkinsvm
+  become: yes
+  tasks:
+  - name: Updating APT package manager repositories cache
+    apt:
+      update_cache: yes
+  - name: Installing Java
+    apt:
+      name: openjdk-11-jdk
+      state: present
+  - name: Adding Jenkins APT key
+    apt_key:
+      url=https://pkg.jenkins.io/debian-stable/jenkins.io.key
+      state=present
+  - name: Adding Jenkins deb repositry 
+    apt_repository:
+      repo='deb https://pkg.jenkins.io/debian-stable binary/'
+      state=present
+  - name: Installing Jenkins
+    apt:
+      name: jenkins
+      update_cache: yes
+  - name: Get the jenkins-cli jarfile from the Jenkins server
+    get_url:
+      url: "http://192.168.88.51:8080/jnlpJars/jenkins-cli.jar"
+      dest: "/opt/jenkins-cli.jar"
+    register: jarfile_get
+    until: "'OK' in jarfile_get.msg or 'file already exists' in jarfile_get.msg"
+    retries: 5
+    delay: 10
+  - name: Stopping Jenkins service
+    systemd:
+      name: jenkins
+      state: stopped
+  - name: Removing Jenkins default configuration
+    file:
+      state: absent
+      path: /var/lib/jenkins
+  - name: Creating directories for Jenkins
+    file:
+      path: "{{ item }}"
+      state: directory
+      owner: jenkins
+      group: jenkins
+      recurse: yes
+    with_items:
+      - '/var/cache/jenkins/tmp'
+      - '/var/cache/jenkins/heapdumps'
+      - '/var/lib/jenkins'
+  - name: Restoring Jenkins settings
+    copy:
+      src="jencfg/"
+      dest="/var/lib/jenkins/"
+      owner=jenkins
+      group=jenkins
+      mode=0644
+  - name: Coping Jenkins ssh keys
+    copy:
+      src="/home/vagrant/.ssh/vagrant_rsa"
+      dest="/var/lib/jenkins/.ssh/id_rsa"
+      owner=jenkins
+      group=jenkins
+      mode=0600
+  - name: Install Jenkins plugins
+    command: >
+      java -jar /opt/jenkins-cli.jar -s http://192.168.88.51:8080/ -i /var/lib/jenkins/.ssh/id_rsa install-plugin {{ item }}
+      creates=/var/lib/jenkins/plugins/{{ item }}.jpi
+    with_items:
+      - git
+      - git-client
+      - github
+      - github-api
+      - github-branch-source
+      - greenballs
+      - pam-auth
+      - publish-over-ssh
+  - name: Starting jenkins service
+    systemd:
+      name: jenkins
+      state: restarted
+
+- name: Installing and configuring Apache on prodvm
+  hosts: prodvm
+  become: yes
+
+  tasks:
+  - name: Updating APT package manager repositories cache
+    apt:
+      update_cache: yes
+  - name: Installsing latest version of Apache
+    apt:
+      name=apache2 update_cache=yes state=latest
+  - name: Changing group rights for /var/www
+    become: yes
+    become_user: vagrant
+    shell:
+      sudo chgrp -R vagrant /var/www
+  - name: Changing access rights fro /var/www
+    become: yes
+    become_user: vagrant
+    shell:
+      sudo chmod -R g+rw /var/www
