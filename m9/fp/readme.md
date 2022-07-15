@@ -97,7 +97,7 @@ After script has ended, PowerShell command prompt string displayed. At this mome
   ![img](images/apache_before.jpg)
 </details>  
 
-oh, it's not default apache wellcome page, bacause, code is allready placed in existing GitHub expiremental repository and Jankins has started and did his work correctly, however we now can login to gitvm host(192.168.88.50) via ssh protocol and try to change our website look
+oh, it's not default apache wellcome page, bacause, code is allready placed in existing GitHub expiremental repository and Jankins has started and did his work correctly, however we now can login to gitvm host ```(192.168.88.50)``` via ssh protocol and try to change our website look
 <details>
   <summary>Click to expand!</summary>
 
@@ -119,7 +119,7 @@ The same text that we see before on prodvm website```(http://192.168.88.52/)```,
   ![img](images/gitvm4.jpg)
 </details>  
 
-Now waiting few minutes and tring to reach prodvm(http://192.168.88.52/) and look for changes
+Now waiting few minutes and tring to reach prodvm ```(http://192.168.88.52/)``` and look for changes
 <details>
   <summary>Click to expand!</summary>
 
@@ -156,4 +156,4 @@ And job console output
   ![img](images/github.jpg)
 </details>  
 
-## Thanks
+## THANKS!
