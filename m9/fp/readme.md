@@ -1,13 +1,14 @@
 # FINAL PROJECT
 
-Contents:
+Files list:  
 Presentation file: ```FinalProject.ppt(would be updated soon)```  
 Vagrant configuration file: ```Vagrantfile```  
 Ansible playbook: ```ansible/config.yml```  
 Ansble hosts file: ```ansible/hosts.ini```  
 Public SSH Key: ```keys/.ssh/vagrant_rsa```  
 Private SSH Key: ```keys/.ssh/vagrant_rsa.pub```  
-Brief description: This file(```readme.md```)  
+Folder with Jenkins settings: ```jencfg/```  
+Brief description: This file(```readme.md```)    
   
 
 ## FEW WORDS ABOUT MYSELF
